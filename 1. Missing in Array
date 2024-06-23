@@ -1,0 +1,48 @@
+Question --
+
+Given an array of size n-1 such that it only contains distinct integers in the range of 1 to n. Return the missing element.
+
+Examples:
+
+Input: n = 5, arr[] = {1,2,3,5}
+Output: 4
+Explanation : All the numbers from 1 to 5 are present except 4.
+Input: n = 2, arr[] = {1}
+Output: 2
+Explanation : All the numbers from 1 to 2 are present except 2.
+
+Solution:-
+
+// User function Template for Java
+class Solution {
+
+    // Note that the size of the array is n-1
+    int missingNumber(int n, int arr[]) {
+     int totalSum = n * (n + 1) / 2;
+        
+        // Calculate the actual sum of elements in the array
+        int actualSum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            actualSum += arr[i];
+        }
+        
+        // The missing number is the difference between total sum and actual sum
+        return totalSum - actualSum;
+    }
+}
+
+
+Complexity-
+Explanation:
+Total Sum Calculation: Calculating the total sum of the first n natural numbers is O(1). This involves a simple arithmetic operation 
+n×(n+1)/2
+​Actual Sum Calculation: Iterating through the array to calculate the sum of its elements takes O(n) time. This is because you need to visit each element once to 
+compute the sum.
+
+Finding the Missing Number: Subtracting the actual sum from the total sum to find the missing number is O(1).
+
+Therefore, the overall time complexity of the solution is dominated by the O(n) complexity of iterating through the array to compute the actual sum.
+
+Space Complexity:
+The space complexity of the solution is O(1) because it uses a constant amount of extra space regardless of the input size 𝑛.The space usage is primarily for 
+storing variables totalSum, actualSum, and loop counters, which do not depend on the input size directly.
