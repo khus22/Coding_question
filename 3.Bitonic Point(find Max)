@@ -1,0 +1,53 @@
+Question-
+Given an array arr of n elements that is first strictly increasing and then maybe strictly decreasing, find the maximum element in the array.
+Note: If the array is increasing then just print the last element will be the maximum value.
+
+Example 1:
+
+Input: 
+n = 9
+arr[] = {1,15,25,45,42,21,17,12,11}
+Output: 45
+Explanation: Maximum element is 45.
+Example 2:
+
+Input: 
+n = 5
+arr[] = {1, 45, 47, 50, 5}
+Output: 50
+
+
+These complexities are typical for a linear search algorithm. Linear search is efficient for small to moderately sized arrays or for unsorted arrays where other more efficient search algorithms 
+(such as binary search) cannot be applied.
+
+code
+class Solution {
+    int findMaximum(int[] arr, int n) {
+        // Initialize the maximum to the first element
+        int max = arr[0];
+
+        // Start the loop from the second element
+        for (int i = 1; i < n; i++) {
+            // Update the maximum if the current element is greater
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+}
+Explanation:
+Initialization: The maximum (max) is initialized to the first element of the array.
+Loop through the array: The loop starts from the second element (index 1) and goes up to the last element (index n-1).
+Update the maximum: Within the loop, if the current element arr[i] is greater than the current maximum, update max to be arr[i].
+Return the maximum: After the loop completes, return the value of max.
+
+Complexity Analysis:
+Time Complexity:
+The time complexity of this algorithm is O(n) because it involves a single loop that iterates through all n elements of the array once.
+Space Complexity:
+The space complexity of this algorithm is O(1) because it uses a constant amount of extra space for the max variable.
+Summary:
+Time Complexity: O(n)
+Space Complexity: O(1)
+This solution is efficient for finding the maximum element in an array. It ensures that every element is checked exactly once, and only a single additional variable (max) is used.
