@@ -1,0 +1,53 @@
+Question -
+Given an array arr of size n, print the second largest distinct element from an array. If the second largest element doesn't exist then return -1.
+
+Example 1:
+
+Input: 
+n = 6, arr[] = {12, 35, 1, 10, 34, 1}
+Output: 34
+Explanation: The largest element of the array is 35 and the second largest element is 34.
+
+Solution -
+Explanation:
+Handle Special Case: Check if the array has less than two elements, returning -1 if true.
+Initialize Variables: Larg and sec are initialized to Integer.MIN_VALUE to handle negative values correctly.
+Find Largest and Second Largest:
+If the current element is greater than Larg, update sec to Larg and then update Larg to the current element.
+If the current element is greater than sec and not equal to Larg, update sec.
+Return Value: If sec remains Integer.MIN_VALUE, it means no second largest element was found, so return -1. Otherwise, return sec.
+Complexity Analysis:
+Time Complexity: O(n) because it involves a single loop that iterates through all n elements of the array once.
+Space Complexity: O(1) because it uses a constant amount of extra space for the Larg and sec variables.
+
+Code-
+class Solution {
+    int print2largest(int arr[], int n) {
+       if (n < 2) {
+            return -1; // Less than two elements, so no second largest element
+        }
+
+        int Larg = Integer.MIN_VALUE;
+        int sec = Integer.MIN_VALUE;
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > Larg) {
+                sec = Larg;
+                Larg = arr[i];
+            } else if (arr[i] > sec && arr[i] != Larg) {
+                sec = arr[i];
+            }
+        }
+
+        if (sec == Integer.MIN_VALUE) {
+            return -1; // This means no second largest element was found
+        }
+
+        return sec;
+    }
+}
+
+
+
+
+
